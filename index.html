@@ -20,4 +20,37 @@
         return playerSelection
     }
 
+    function playRound(computerSelection, playerSelection){
+        if (computerSelection === playerSelection){
+            console.log("Tie, the computer also picked " + computerSelection)
+        }
+        else if (playerSelection==="rock" && computerSelection=="paper"){
+            console.log("Computer Wins! Paper beats Rock!")
+        }
+        else if (playerSelection==="rock" && computerSelection=="scissors"){
+            console.log("You Win! Rock beats Scissors!")
+        }
+        else if (playerSelection==="paper" && computerSelection=="rock"){
+            console.log("You Win! Paper beats Rock!")
+        }
+        else if (playerSelection==="paper" && computerSelection=="scissors"){
+            console.log("Computer Wins! Scissors beat Paper!")
+        }
+        else if (playerSelection==="scissors" && computerSelection=="rock"){
+            console.log("Computer Wins! Rock beats Scissors!")
+        }
+        else if (playerSelection==="scissors" && computerSelection=="paper"){
+            console.log("You Win! Scissors beats Paper!")
+        }
+        else{
+            console.log("Incorrect Input! You Lose!")
+        }
+    }
+    playRound(getComputerChoice(), getPlayerChoice())
+
+
+
+
+
+
 </script>
