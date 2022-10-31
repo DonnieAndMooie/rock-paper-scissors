@@ -1,25 +1,35 @@
-<script>
-    function getComputerChoice(){
-        randomNum = Math.floor(Math.random()*3 + 1);
-        if (randomNum === 1){
-            computerSelection = "rock"
-        }
-        else if (randomNum === 2){
-            computerSelection = "paper"
-        }
-        else if (randomNum === 3){
-            computerSelection = "scissors"
-        }
-        return computerSelection
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <div>
 
-        
-    }
-    function getPlayerChoice(){
-        input = prompt("Enter your selection:")
-        playerSelection = input.toLowerCase()
-        return playerSelection
-    }
-    function game(){
+    </div>
+    <script>
+        function getComputerChoice(){
+            randomNum = Math.floor(Math.random()*3 + 1);
+            if (randomNum === 1){
+                computerSelection = "rock"
+            }
+            else if (randomNum === 2){
+                computerSelection = "paper"
+            }
+            else if (randomNum === 3){
+                computerSelection = "scissors"
+            }
+            return computerSelection
+    
+            
+        }
+        function getPlayerChoice(){
+            buttonRock.addEventListener("click", () => playerSelection = "rock");
+            return playerSelection
+        }
         function playRound(computerSelection, playerSelection){
             if (computerSelection === playerSelection){
                 console.log("Tie, the computer also picked " + computerSelection)
@@ -56,22 +66,49 @@
                 result = 1
                 return result
             }
-            else{
                 console.log("Incorrect Input! You Lose!")
                 result = 2
                 return result
             }
-        }
+            
+        
+    
+        const buttonRock = document.createElement("button");
+        const buttonPaper = document.createElement("button");
+        const buttonScissors = document.createElement("button");
+        const div = document.querySelector("div");
+    
+        buttonRock.textContent = "Rock";
+        buttonPaper.textContent = "Paper"
+        buttonScissors.textContent = "Scissors"
 
-
-
-    game()
+        div.appendChild(buttonRock);
+        div.appendChild(buttonPaper);
+        div.appendChild(buttonScissors);
+    
+        buttonRock.addEventListener("click",() => {
+            playRound(getComputerChoice(), "rock")
+        });
+        
+        buttonPaper.addEventListener("click",() => {
+            playRound(getComputerChoice(), "paper")
+        });
+        
+        buttonScissors.addEventListener("click",() => {
+            playRound(getComputerChoice(), "scissors")
+        });
     
 
+    
+    
+    
+    
+    </script>
+</body>
+</html>
 
 
 
 
 
 
-</script>
