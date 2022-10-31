@@ -10,6 +10,9 @@
     <div>
 
     </div>
+    <div class ="result">
+
+    </div>
     <script>
         function getComputerChoice(){
             randomNum = Math.floor(Math.random()*3 + 1);
@@ -32,43 +35,41 @@
         }
         function playRound(computerSelection, playerSelection){
             if (computerSelection === playerSelection){
-                console.log("Tie, the computer also picked " + computerSelection)
+                resultDiv.textContent = "Tie, the computer also picked " + computerSelection
                 result = 0
                 return result
             }
             else if (playerSelection==="rock" && computerSelection=="paper"){
-                console.log("Computer Wins! Paper beats Rock!")
+                resultDiv.textContent = "Computer Wins! Paper beats Rock!"
                 result = 2
                 return result
             }
             else if (playerSelection==="rock" && computerSelection=="scissors"){
-                console.log("You Win! Rock beats Scissors!")
+                resultDiv.textContent = "You Win! Rock beats Scissors!"
                 result = 1
                 return result
             }
             else if (playerSelection==="paper" && computerSelection=="rock"){
-                console.log("You Win! Paper beats Rock!")
+                resultDiv.textContent = "You Win! Paper beats Rock!"
                 result = 1
                 return result
             }
             else if (playerSelection==="paper" && computerSelection=="scissors"){
-                console.log("Computer Wins! Scissors beat Paper!")
+                resultDiv.textContent = "Computer Wins! Scissors beat Paper!"
                 result = 2
                 return result
             }
             else if (playerSelection==="scissors" && computerSelection=="rock"){
-                console.log("Computer Wins! Rock beats Scissors!")
+                resultDiv.textContent = "Computer Wins! Rock beats Scissors!"
                 result = 2
                 return result
             }
             else if (playerSelection==="scissors" && computerSelection=="paper"){
-                console.log("You Win! Scissors beats Paper!")
+                resultDiv.textContent = "You Win! Scissors beats Paper!"
                 result = 1
                 return result
             }
-                console.log("Incorrect Input! You Lose!")
-                result = 2
-                return result
+    
             }
             
         
@@ -77,6 +78,7 @@
         const buttonPaper = document.createElement("button");
         const buttonScissors = document.createElement("button");
         const div = document.querySelector("div");
+        const resultDiv = document.querySelector(".result");
     
         buttonRock.textContent = "Rock";
         buttonPaper.textContent = "Paper"
