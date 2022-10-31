@@ -7,10 +7,19 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div>
+    <div class="score">
+
+    </div>
+    <div class = "container">
 
     </div>
     <div class ="result">
+
+    </div>
+    <div class ="overallScore">
+
+    </div>
+    
 
     </div>
     <script>
@@ -36,53 +45,93 @@
         function playRound(computerSelection, playerSelection){
             if (computerSelection === playerSelection){
                 resultDiv.textContent = "Tie, the computer also picked " + computerSelection
-                result = 0
-                return result
+                return
             }
             else if (playerSelection==="rock" && computerSelection=="paper"){
                 resultDiv.textContent = "Computer Wins! Paper beats Rock!"
-                result = 2
-                return result
+                computerWins += 1
+                updateScore()
+                
             }
             else if (playerSelection==="rock" && computerSelection=="scissors"){
                 resultDiv.textContent = "You Win! Rock beats Scissors!"
-                result = 1
-                return result
+                playerWins += 1
+                updateScore()
             }
             else if (playerSelection==="paper" && computerSelection=="rock"){
                 resultDiv.textContent = "You Win! Paper beats Rock!"
-                result = 1
-                return result
+                playerWins += 1
+                updateScore()
             }
             else if (playerSelection==="paper" && computerSelection=="scissors"){
                 resultDiv.textContent = "Computer Wins! Scissors beat Paper!"
-                result = 2
-                return result
+                computerWins += 1
+                updateScore()
+
             }
             else if (playerSelection==="scissors" && computerSelection=="rock"){
                 resultDiv.textContent = "Computer Wins! Rock beats Scissors!"
-                result = 2
-                return result
+                computerWins += 1
+                updateScore()
             }
             else if (playerSelection==="scissors" && computerSelection=="paper"){
                 resultDiv.textContent = "You Win! Scissors beats Paper!"
-                result = 1
-                return result
+                playerWins += 1
+                updateScore()
             }
     
             }
             
+        let playerWins = 0
+        let computerWins = 0
+
         
     
         const buttonRock = document.createElement("button");
         const buttonPaper = document.createElement("button");
         const buttonScissors = document.createElement("button");
-        const div = document.querySelector("div");
+        const div = document.querySelector(".container");
         const resultDiv = document.querySelector(".result");
+        const scoreDiv = document.querySelector(".score");
+        const overall = document.querySelector(".overallScore");
+
     
         buttonRock.textContent = "Rock";
-        buttonPaper.textContent = "Paper"
-        buttonScissors.textContent = "Scissors"
+        buttonPaper.textContent = "Paper";
+        buttonScissors.textContent = "Scissors";
+
+        function updateScore(){
+            scoreDiv.textContent = "You: " + playerWins + " Computer: " + computerWins
+            if (playerWins === 5){
+                overall.textContent = "You Win The Game!";
+                reset()
+                }
+            if (computerWins === 5){
+                overall.textContent = "Computer Wins The Game!"
+                reset()
+            }
+        }
+
+        function reset(){
+            buttonRock.style.display = "none";
+            buttonPaper.style.display = "none";
+            buttonScissors.style.display = "none";
+            const playAgain = document.createElement("button");
+            playAgain.textContent = "Play Again"
+            overall.appendChild(playAgain)
+            playAgain.addEventListener("click",() =>{
+                playerWins = 0;
+                computerWins = 0;
+                playAgain.remove();
+                buttonRock.style.display = "inline-block";
+                buttonPaper.style.display = "inline-block";
+                buttonScissors.style.display = "inline-block";
+                overall.textContent = ""
+                resultDiv.textContent = ""
+                updateScore()
+            })
+        }
+        updateScore()
 
         div.appendChild(buttonRock);
         div.appendChild(buttonPaper);
@@ -99,8 +148,10 @@
         buttonScissors.addEventListener("click",() => {
             playRound(getComputerChoice(), "scissors")
         });
-    
 
+        
+
+        
     
     
     
